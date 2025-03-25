@@ -1,6 +1,7 @@
 # 🎟️ Ticketing Microservice Application  
 
 A ticketing application built with a microservice architecture, allowing users to book tickets for events at various venues.
+
 ---
 
 ## 🏗️ Architecture Overview  
@@ -30,8 +31,7 @@ This application consists of multiple **Spring Boot microservices**, each handli
 - **Keycloak**: Authentication & Authorization  
 - **Resilience4j**: Fault tolerance with circuit breaking  
 - **Swagger/OpenAPI**: API documentation  
-
----
+- **Flyway**: Database versioning & migration  
 
 ---
 
@@ -47,16 +47,19 @@ This application consists of multiple **Spring Boot microservices**, each handli
 ✔ Manages **venues & events**  
 ✔ Handles **ticket availability** updates  
 ✔ Provides REST endpoints for querying venues/events  
+✔ Uses **Flyway** for database migrations  
 
 ### 🔹 Booking Service  
 ✔ Validates **ticket reservations**  
 ✔ Checks **inventory availability**  
 ✔ Publishes booking events to **Kafka**  
+✔ Uses **Flyway** for database migrations  
 
 ### 🔹 Order Service  
 ✔ Listens for **Kafka booking events**  
 ✔ Processes **order confirmations**  
 ✔ Updates ticket inventory after successful bookings  
+✔ Uses **Flyway** for database migrations  
 
 ---
 
@@ -75,6 +78,7 @@ This application consists of multiple **Spring Boot microservices**, each handli
 - ✅ **🔑 Keycloak**: Secure authentication with JWT & role-based access control  
 - ✅ **⚡ Resilience4j**: Circuit breakers & fallback mechanisms  
 - ✅ **🛤️ Kafka**: Asynchronous messaging for handling failures gracefully  
+- ✅ **📜 Flyway**: Ensures database schema consistency across services  
 
 ---
 
@@ -85,18 +89,9 @@ This application consists of multiple **Spring Boot microservices**, each handli
 - Java 17+  
 - Maven  
 
-### Setup
-1. Clone the repository
-2. Navigate to the project root
-3. Run the infrastructure services:
-   
-bash
-   cd inventoryservice
-   docker-compose up -d
-
-### Setup
-1. Clone the repository
-2. Navigate to the project root
+### Setup  
+1. Clone the repository  
+2. Navigate to the project root  
 3. Run the infrastructure services:
    ```bash
    cd inventoryservice
@@ -104,9 +99,9 @@ bash
    ```
 4. Build and run each service:
 
+### Access Points  
+- API Gateway: http://localhost:8090  
+- Keycloak: http://localhost:8091  
+- Swagger UI: http://localhost:8090/swagger-ui.html  
+- Kafka UI: http://localhost:8084  
 
-### Access Points
-- API Gateway: http://localhost:8090
-- Keycloak: http://localhost:8091
-- Swagger UI: http://localhost:8090/swagger-ui.html
-- Kafka UI: http://localhost:8084
